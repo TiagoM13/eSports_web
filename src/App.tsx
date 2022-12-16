@@ -15,12 +15,16 @@ export const App = () => {
       </h1>
 
       <div className="grid grid-cols-6 gap-6 mt-16">
-        <GameBanner />
-        <GameBanner />
-        <GameBanner />
-        <GameBanner />
-        <GameBanner />
-        <GameBanner />
+        <GameBanner
+          bannerURL='/public/game_1.png'
+          title='League of Legends'
+          adsCount={5}
+        />
+        <GameBanner
+          bannerURL='/public/game_2.png'
+          title='Dota 2'
+          adsCount={2}
+        />
       </div>
 
       <div className="pt-1 bg-nlw-gradient self-stretch mt-8 rounded-lg overflow-hidden">
