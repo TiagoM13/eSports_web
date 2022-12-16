@@ -10,7 +10,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        img_galaxy: "url('/background_galaxy.png')",
+        img_galaxy: "url('../assets/background_galaxy.png')",
         'nlw-gradient': 'linear-gradient(89.86deg, #9572FC 18.08%, #40E7AD 40.94%, #E1D55D 90.57%)',
         'game-gradient': 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%)',
       }
