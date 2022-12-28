@@ -7,20 +7,12 @@ import { GameBanner } from './components/GameBanner';
 import { CreateAdBanner } from './components/CreateAdBanner';
 import { CreateAdModal } from './components/Form/CreateAdModal';
 
-import { IGame } from './interfaces/game';
-
-import { api } from './service/api';
+import { useGetGames } from './hooks/useGetGames';
 
 import './styles/main.css';
 
 export const App = () => {
-  const [games, setGames] = useState<IGame[]>([]);
-
-  useEffect(() => {
-    api.get('/games').then(response => {
-      setGames(response.data);
-    })
-  }, []);
+  const { games } = useGetGames();
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
