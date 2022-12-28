@@ -3,22 +3,20 @@ import { Check, GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import axios from 'axios';
 
 import { Input } from '../Form/Input';
 
-interface Game {
-  id: string;
-  title: string;
-}
+import { IGame } from '../../interfaces/game';
+
+import { api } from '../../service/api';
 
 export const CreateAdModal = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<IGame[]>([]);
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
-    axios('http://localhost:3333/games').then(response => {
+    api.get('/games').then(response => {
       setGames(response.data);
     })
   }, []);
@@ -34,7 +32,7 @@ export const CreateAdModal = () => {
     }
 
     try {
-      await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
+      await api.post(`/games/${data.game}/ads`, {
         name: data.name,
         yearsPlaying: Number(data.yearsPlaying),
         discord: data.discord,
