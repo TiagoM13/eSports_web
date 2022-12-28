@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Check, GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
@@ -6,20 +6,15 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
 import { Input } from '../Form/Input';
 
-import { IGame } from '../../interfaces/game';
+import { useGetGames } from '../../hooks/useGetGames';
 
 import { api } from '../../service/api';
 
 export const CreateAdModal = () => {
-  const [games, setGames] = useState<IGame[]>([]);
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
-  useEffect(() => {
-    api.get('/games').then(response => {
-      setGames(response.data);
-    })
-  }, []);
+  const { games } = useGetGames();
 
   const handleCreateAd = async (event: FormEvent) => {
     event.preventDefault();
