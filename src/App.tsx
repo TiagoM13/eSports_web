@@ -4,23 +4,16 @@ import axios from 'axios';
 
 import logo from './assets/logo.svg';
 
+import { IGame } from './interfaces/game';
+
 import { GameBanner } from './components/GameBanner';
 import { CreateAdBanner } from './components/CreateAdBanner';
 import { CreateAdModal } from './components/Form/CreateAdModal';
 
 import './styles/main.css';
 
-interface Game {
-  id: string;
-  title: string;
-  bannerURL: string;
-  _count: {
-    ads: number;
-  }
-}
-
 export const App = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<IGame[]>([]);
 
   useEffect(() => {
     axios('http://localhost:3333/games').then(response => {

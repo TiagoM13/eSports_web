@@ -5,15 +5,12 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import axios from 'axios';
 
+import { IGame } from '../../interfaces/game';
+
 import { Input } from '../Form/Input';
 
-interface Game {
-  id: string;
-  title: string;
-}
-
 export const CreateAdModal = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<IGame[]>([]);
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
